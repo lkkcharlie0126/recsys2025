@@ -19,6 +19,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 
+# setup git
+RUN git config --global --add safe.directory /app
+RUN git config --global user.email "$GIT_USER_EMAIL"
+RUN git config --global user.name "$GIT_USER_NAME"
+
+
 # Default command to keep the container running
 CMD ["tail", "-f", "/dev/null"]
 
